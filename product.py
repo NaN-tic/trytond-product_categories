@@ -132,3 +132,7 @@ class Category:
     required = fields.Boolean('Required', states={
         'invisible': Eval('kind') != 'view',
         })
+
+    @staticmethod
+    def default_kind():
+        return 'other'

@@ -10,12 +10,10 @@ msgctxt "error:product.template:"
 msgid "The template %s is missing some required categories"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.category,kind:"
 msgid "Kind"
 msgstr "Tipo"
 
-#, fuzzy
 msgctxt "field:product.category,required:"
 msgid "Required"
 msgstr "Requerido"
@@ -24,7 +22,6 @@ msgctxt "field:product.category,unique:"
 msgid "Unique"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template,categories:"
 msgid "Categories"
 msgstr "Categorías"
@@ -69,17 +66,14 @@ msgctxt "selection:product.category,kind:"
 msgid "Accounting"
 msgstr "Contabilidad"
 
-#, fuzzy
 msgctxt "selection:product.category,kind:"
 msgid "Other"
 msgstr "Otros"
 
-#, fuzzy
 msgctxt "selection:product.category,kind:"
 msgid "View"
 msgstr "Vista"
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Categories"
 msgstr "Categorías"
