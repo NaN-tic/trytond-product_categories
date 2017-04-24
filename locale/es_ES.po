@@ -1,0 +1,85 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:product.template:"
+msgid "The template %s has repeated categories marked as unique"
+msgstr ""
+
+msgctxt "error:product.template:"
+msgid "The template %s is missing some required categories"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.category,kind:"
+msgid "Kind"
+msgstr "Tipo"
+
+#, fuzzy
+msgctxt "field:product.category,required:"
+msgid "Required"
+msgstr "Requerido"
+
+msgctxt "field:product.category,unique:"
+msgid "Unique"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.template,categories:"
+msgid "Categories"
+msgstr "Categorías"
+
+msgctxt "field:product.template-product.categories,category:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "field:product.template-product.categories,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.template-product.categories,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:product.template-product.categories,id:"
+msgid "ID"
+msgstr "Identificador"
+
+msgctxt "field:product.template-product.categories,product:"
+msgid "Product"
+msgstr "Productos"
+
+msgctxt "field:product.template-product.categories,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.template-product.categories,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:product.template-product.categories,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "model:product.template-product.categories,name:"
+msgid "Categories for products"
+msgstr "Categorias por productos"
+
+msgctxt "selection:product.category,kind:"
+msgid "Accounting"
+msgstr "Contabilidad"
+
+#, fuzzy
+msgctxt "selection:product.category,kind:"
+msgid "Other"
+msgstr "Otros"
+
+#, fuzzy
+msgctxt "selection:product.category,kind:"
+msgid "View"
+msgstr "Vista"
+
+#, fuzzy
+msgctxt "view:product.template:"
+msgid "Categories"
+msgstr "Categorías"
