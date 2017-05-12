@@ -3,12 +3,14 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/notebook" position="replace_attributes">
-		<page id="accounting" states="{'invisible': Eval('kind').in_(['view', 'other']) }"/>
+		<page id="accounting" states="{'invisible': ~Eval('accounting')}"/>
 	</xpath>
 
     <xpath expr="/form/field[@name='parent']" position="after">
         <label name="kind"/>
         <field name="kind"/>
+        <label name="accounting"/>
+        <field name="accounting"/>
         <label name="required"/>
         <field name="required"/>
         <label name="unique"/>

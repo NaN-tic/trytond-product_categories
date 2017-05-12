@@ -39,7 +39,7 @@ class Template:
     def __setup__(cls):
         super(Template, cls).__setup__()
         # TODO: Remove in 4.0
-        cls.category.domain = [('kind', '=', 'accounting')]
+        cls.category.domain = [('accounting', '=', True)]
         cls._error_messages.update({
                 'missing_categories': ('The template %s is missing some '
                     'required categories'),
@@ -113,7 +113,8 @@ class ProductCategories(ModelSQL):
     product = fields.Many2One('product.template', 'Product', required=True,
         ondelete='CASCADE', select=True)
     category = fields.Many2One('product.category', 'Category', required=True,
-        domain=[('kind', 'not in', ['view', 'accounting'])],
+        domain=[('kind', '!=', 'view'),
+        ('accounting', '=', True)],
         ondelete='CASCADE', select=True)
 
 
@@ -122,7 +123,6 @@ class Category:
 
     kind = fields.Selection([
         ('other', 'Other'),
-        ('accounting', 'Accounting'),
         ('view', 'View'),
         ], 'Kind', required=True)
 
@@ -132,6 +132,7 @@ class Category:
     required = fields.Boolean('Required', states={
         'invisible': Eval('kind') != 'view',
         })
+    accounting = fields.Boolean('Accounting')
 
     @staticmethod
     def default_kind():

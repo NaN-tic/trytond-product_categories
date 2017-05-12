@@ -4,6 +4,7 @@
 <data>
     <xpath expr="/tree/field[@name='name']"
         position="after">
+        <field name="accounting"/>
         <field name="required"/>
         <field name="unique"/>
     </xpath>
