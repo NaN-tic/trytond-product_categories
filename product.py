@@ -66,10 +66,12 @@ class Template:
         required_categories = [r.id for r in required_categories]
         unique_categories_ids = [u.id for u in unique_categories]
 
-        childs_required = Categories.search([
-                ('parent', 'child_of', required_categories),
-                ('id', 'not in', required_categories)])
-        childs_required = [c.id for c in childs_required]
+        childs_required = []
+        for required in required_categories:
+            childs = Categories.search([
+                    ('parent', 'child_of', [required]),
+                    ('id', '!=', required)])
+            childs_required.append([c.id for c in childs])
 
         for id in template:
             template = cls(id)
@@ -95,15 +97,12 @@ class Template:
 
     @staticmethod
     def check_if_exisit(list1, list2):
-        list_1 = collections.Counter(list1)
-        list_2 = collections.Counter(list2)
-
-        if len(list1) > len(list2):
-            list_1.subtract(list_2)
-            return all(v >= 0 for k, v in list_1.items())
-        else:
-            list_2.subtract(list_1)
-            return all(v >= 0 for k, v in list_2.items())
+        for template in list2:
+            for required_parent in list1:
+                if template in required_parent:
+                    list1.remove(required_parent)
+                    break
+        return list1 == []
 
 
 class ProductCategories(ModelSQL):
@@ -114,7 +113,7 @@ class ProductCategories(ModelSQL):
         ondelete='CASCADE', select=True)
     category = fields.Many2One('product.category', 'Category', required=True,
         domain=[('kind', '!=', 'view'),
-        ('accounting', '=', True)],
+        ('accounting', '=', False)],
         ondelete='CASCADE', select=True)
 
 
