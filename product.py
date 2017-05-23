@@ -101,7 +101,6 @@ class Template:
             for required_parent in list1:
                 if template in required_parent:
                     list1.remove(required_parent)
-                    break
         return list1 == []
 
 
