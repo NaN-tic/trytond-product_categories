@@ -42,7 +42,7 @@ class Template:
         cls.category.domain = [('accounting', '=', True)]
         cls._error_messages.update({
                 'missing_categories': ('The template %s is missing some '
-                    'required categories'),
+                    'required categories: %s'),
                 'repeated_unique': ('The template %s has repeated '
                     'categories marked as unique'),
                 })
@@ -82,7 +82,15 @@ class Template:
                 template_categories_ids)
 
             if not exisits:
-                cls.raise_user_error('missing_categories', template.rec_name)
+                req = []
+                count = 0
+                for required in required_categories:
+                    req.append(Categories(required).name)
+                    count += 1
+                    if count == 3:
+                        break
+                cls.raise_user_error('missing_categories', (template.rec_name,
+                    ', '.join(req)))
 
             childs = Categories.search([
                 ('parent', 'child_of', unique_categories_ids),

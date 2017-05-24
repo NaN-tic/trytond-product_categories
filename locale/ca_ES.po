@@ -7,8 +7,8 @@ msgid "The template %s has repeated categories marked as unique"
 msgstr ""
 
 msgctxt "error:product.template:"
-msgid "The template %s is missing some required categories"
-msgstr ""
+msgid "The template %s is missing some required categories: %s"
+msgstr "El producte %s li falten categories marcades com requerides %s"
 
 msgctxt "field:product.category,kind:"
 msgid "Kind"
@@ -20,7 +20,7 @@ msgstr "Requerit"
 
 msgctxt "field:product.category,unique:"
 msgid "Unique"
-msgstr ""
+msgstr "Única"
 
 msgctxt "field:product.template,categories:"
 msgid "Categories"
