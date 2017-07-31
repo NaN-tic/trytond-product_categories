@@ -2,7 +2,7 @@
 # copyright notices and license terms.
 from trytond.model import ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Bool
 
 __all__ = ['Template', 'ProductCategories', 'Category']
 
@@ -137,6 +137,9 @@ class Category:
             'invisible': Eval('kind') != 'view',
         }, depends=['kind'])
     accounting = fields.Boolean('Accounting')
+    def_category = fields.Boolean('Default Category', states={
+        'invisible': (Eval('kind') != 'other') | Bool(Eval('accounting'))
+        })
 
     @staticmethod
     def default_kind():

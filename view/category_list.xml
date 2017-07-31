@@ -7,5 +7,6 @@
         <field name="accounting"/>
         <field name="required"/>
         <field name="unique"/>
+        <field name="def_category"/>
     </xpath>
 </data>
