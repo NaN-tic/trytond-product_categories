@@ -3,7 +3,7 @@
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Bool
 import collections
 
 
@@ -139,6 +139,10 @@ class Category:
         'invisible': Eval('kind') != 'view',
         })
     accounting = fields.Boolean('Accounting')
+
+    def_category = fields.Boolean('Default Category', states={
+        'invisible': (Eval('kind') != 'other') | Bool(Eval('accounting'))
+        })
 
     @staticmethod
     def default_kind():
