@@ -10,6 +10,14 @@ msgctxt "error:product.template:"
 msgid "The template %s is missing some required categories: %s"
 msgstr "El producto %s le faltan categorias requreidas: %s"
 
+msgctxt "field:product.category,accounting:"
+msgid "Accounting"
+msgstr "Contabilidad"
+
+msgctxt "field:product.category,def_category:"
+msgid "Default Category"
+msgstr "Categoría por defecto"
+
 msgctxt "field:product.category,kind:"
 msgid "Kind"
 msgstr "Tipo"
@@ -22,8 +30,9 @@ msgctxt "field:product.category,unique:"
 msgid "Unique"
 msgstr "Única"
 
+#, fuzzy
 msgctxt "field:product.template,categories:"
-msgid "Categories"
+msgid "Tags"
 msgstr "Categorías"
 
 msgctxt "field:product.template-product.categories,category:"
@@ -61,10 +70,6 @@ msgstr "Usuario modificación"
 msgctxt "model:product.template-product.categories,name:"
 msgid "Categories for products"
 msgstr "Categorias por productos"
-
-msgctxt "selection:product.category,kind:"
-msgid "Accounting"
-msgstr "Contabilidad"
 
 msgctxt "selection:product.category,kind:"
 msgid "Other"
