@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.template:"
 msgid "The template %s has repeated categories marked as unique"
-msgstr ""
+msgstr "Hi han categories repetides marcades com única a la plantilla %s."
 
 msgctxt "error:product.template:"
 msgid "The template %s is missing some required categories: %s"
@@ -22,50 +22,6 @@ msgctxt "field:product.category,unique:"
 msgid "Unique"
 msgstr "Única"
 
-msgctxt "field:product.template,categories:"
-msgid "Categories"
-msgstr "Categories"
-
-msgctxt "field:product.template-product.categories,category:"
-msgid "Category"
-msgstr "Categoria"
-
-msgctxt "field:product.template-product.categories,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:product.template-product.categories,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:product.template-product.categories,id:"
-msgid "ID"
-msgstr "Identificador"
-
-msgctxt "field:product.template-product.categories,product:"
-msgid "Product"
-msgstr "Productes"
-
-msgctxt "field:product.template-product.categories,rec_name:"
-msgid "Name"
-msgstr "Nom"
-
-msgctxt "field:product.template-product.categories,write_date:"
-msgid "Write Date"
-msgstr "Data modificación"
-
-msgctxt "field:product.template-product.categories,write_uid:"
-msgid "Write User"
-msgstr "Usuari modificació"
-
-msgctxt "model:product.template-product.categories,name:"
-msgid "Categories for products"
-msgstr "Categories per productes"
-
-msgctxt "selection:product.category,kind:"
-msgid "Accounting"
-msgstr "Comptabilitat"
-
 msgctxt "selection:product.category,kind:"
 msgid "Other"
 msgstr "Un altre"
@@ -73,11 +29,3 @@ msgstr "Un altre"
 msgctxt "selection:product.category,kind:"
 msgid "View"
 msgstr "Vista"
-
-msgctxt "view:product.category:"
-msgid "Accounting Category"
-msgstr "Categoria Comptable"
-
-msgctxt "view:product.template:"
-msgid "Categories"
-msgstr "Categories"

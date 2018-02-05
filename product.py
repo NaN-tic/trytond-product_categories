@@ -1,10 +1,10 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
-from trytond.model import ModelSQL, fields
+from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
-__all__ = ['Template', 'ProductCategories', 'Category']
+__all__ = ['Template', 'Category']
 
 """
 Add to categories the following:
@@ -14,29 +14,16 @@ Add to categories the following:
     * Required --> One of its child must be in the product
     * Accounting --> Category related in accounting, will not appear in the
       Many2Many view, but it will on the Accounting Category field
-
-Add to products the following:
- - Categories: Many2Many field relating a product with categories
- - Accounting category: Same as before but Many2One and only getting those with
-   the accounting tag set
-
-   This module should be refractored in version 4.0
-
 """
 
 
 class Template:
     __metaclass__ = PoolMeta
     __name__ = 'product.template'
-    # TODO: Remove in 4.0
-    categories = fields.Many2Many('product.template-product.categories',
-        'product', 'category', 'Tags')
 
     @classmethod
     def __setup__(cls):
         super(Template, cls).__setup__()
-        # TODO: Remove in 4.0
-        cls.category.domain = [('accounting', '=', True)]
         cls._error_messages.update({
                 'missing_categories': ('The template %s is missing some '
                     'required categories: %s'),
@@ -51,8 +38,9 @@ class Template:
 
     # TODO: Update in 4.0 to work with new categories field
     @classmethod
-    def _check_categories(cls, template):
+    def _check_categories(cls, templates):
         Categories = Pool().get('product.category')
+
         required_categories = Categories.search([
             ('required', '=', True),
             ('kind', '=', 'view')])
@@ -70,13 +58,10 @@ class Template:
                     ('id', '!=', required)])
             childs_required.append([c.id for c in childs])
 
-        for id in template:
-            template = cls(id)
+        for template in templates:
+            tpl_categories_ids = [c.id for c in template.categories]
 
-            template_categories_ids = [c.id for c in template.categories]
-
-            exisits = cls.check_if_exisit(childs_required,
-                template_categories_ids)
+            exisits = cls.check_if_exisit(childs_required, tpl_categories_ids)
 
             if not exisits:
                 req = []
@@ -109,18 +94,6 @@ class Template:
         return list1 == []
 
 
-class ProductCategories(ModelSQL):
-    "Categories for products"
-    __name__ = 'product.template-product.categories'
-
-    product = fields.Many2One('product.template', 'Product', required=True,
-        ondelete='CASCADE', select=True)
-    category = fields.Many2One('product.category', 'Category', required=True,
-        domain=[('kind', '!=', 'view'),
-        ('accounting', '=', False)],
-        ondelete='CASCADE', select=True)
-
-
 class Category:
     __metaclass__ = PoolMeta
     __name__ = 'product.category'
@@ -128,13 +101,14 @@ class Category:
         ('other', 'Other'),
         ('view', 'View'),
         ], 'Kind', required=True)
-    unique = fields.Boolean('Unique', states={
-        'invisible': Eval('kind') != 'view',
-        })
-    required = fields.Boolean('Required', states={
-        'invisible': Eval('kind') != 'view',
-        })
-    accounting = fields.Boolean('Accounting')
+    unique = fields.Boolean('Unique',
+        states={
+            'invisible': Eval('kind') != 'view',
+        }, depends=['kind'])
+    required = fields.Boolean('Required',
+        states={
+            'invisible': Eval('kind') != 'view',
+        }, depends=['kind'])
 
     @staticmethod
     def default_kind():
