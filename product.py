@@ -51,7 +51,7 @@ class Template:
 
     # TODO: Update in 4.0 to work with new categories field
     @classmethod
-    def _check_categories(cls, template):
+    def _check_categories(cls, templates):
         Categories = Pool().get('product.category')
         required_categories = Categories.search([
             ('required', '=', True),
@@ -70,7 +70,7 @@ class Template:
                     ('id', '!=', required)])
             childs_required.append([c.id for c in childs])
 
-        for id in template:
+        for id in templates:
             template = cls(id)
 
             template_categories_ids = [c.id for c in template.categories]
@@ -128,12 +128,14 @@ class Category:
         ('other', 'Other'),
         ('view', 'View'),
         ], 'Kind', required=True)
-    unique = fields.Boolean('Unique', states={
-        'invisible': Eval('kind') != 'view',
-        })
-    required = fields.Boolean('Required', states={
-        'invisible': Eval('kind') != 'view',
-        })
+    unique = fields.Boolean('Unique',
+        states={
+            'invisible': Eval('kind') != 'view',
+        }, depends=['kind'])
+    required = fields.Boolean('Required',
+        states={
+            'invisible': Eval('kind') != 'view',
+        }, depends=['kind'])
     accounting = fields.Boolean('Accounting')
 
     @staticmethod

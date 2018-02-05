@@ -6,7 +6,7 @@ from . import product
 
 def register():
     Pool.register(
-    	product.Template,
-    	product.Category,
-    	product.ProductCategories,
+        product.Template,
+        product.Category,
+        product.ProductCategories,
         module='product_categories', type_='model')
