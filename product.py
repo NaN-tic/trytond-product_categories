@@ -1,15 +1,11 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
-
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-import collections
-
-
-__metaclass__ = PoolMeta
 
 __all__ = ['Template', 'ProductCategories', 'Category']
+
 """
 Add to categories the following:
  - New type, view --> Like root but inside of it
@@ -30,6 +26,7 @@ Add to products the following:
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = 'product.template'
     # TODO: Remove in 4.0
     categories = fields.Many2Many('product.template-product.categories',
@@ -125,13 +122,12 @@ class ProductCategories(ModelSQL):
 
 
 class Category:
+    __metaclass__ = PoolMeta
     __name__ = 'product.category'
-
     kind = fields.Selection([
         ('other', 'Other'),
         ('view', 'View'),
         ], 'Kind', required=True)
-
     unique = fields.Boolean('Unique', states={
         'invisible': Eval('kind') != 'view',
         })
