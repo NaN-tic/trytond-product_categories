@@ -36,45 +36,43 @@ class Template:
         super(Template, cls).validate(vlist)
         cls._check_categories(vlist)
 
-    # TODO: Update in 4.0 to work with new categories field
     @classmethod
     def _check_categories(cls, templates):
-        Categories = Pool().get('product.category')
+        Category = Pool().get('product.category')
 
-        required_categories = Categories.search([
-            ('required', '=', True),
-            ('kind', '=', 'view')])
-        unique_categories = Categories.search([
-            ('unique', '=', True),
-            ('kind', '=', 'view')])
+        required_categories = Category.search([
+                ('required', '=', True),
+                ('kind', '=', 'view'),
+            ])
+        if not required_categories:
+            return
 
-        required_categories = [r.id for r in required_categories]
-        unique_categories_ids = [u.id for u in unique_categories]
+        unique_categories = Category.search([
+                ('unique', '=', True),
+                ('kind', '=', 'view'),
+            ])
+        if not unique_categories:
+            return
+        unique_categories_ids = [c.id for c in unique_categories]
 
         childs_required = []
         for required in required_categories:
-            childs = Categories.search([
-                    ('parent', 'child_of', [required]),
-                    ('id', '!=', required)])
+            required_id = required.id
+            childs = Category.search([
+                    ('parent', 'child_of', [required_id]),
+                    ('id', '!=', required_id),
+                    ])
             childs_required.append([c.id for c in childs])
 
         for template in templates:
             tpl_categories_ids = [c.id for c in template.categories]
-
             exisits = cls.check_if_exisit(childs_required, tpl_categories_ids)
-
             if not exisits:
-                req = []
-                count = 0
-                for required in required_categories:
-                    req.append(Categories(required).name)
-                    count += 1
-                    if count == 3:
-                        break
+                cat_required = [c.name for c in required_categories]
                 cls.raise_user_error('missing_categories', (template.rec_name,
-                    ', '.join(req)))
+                    ', '.join(cat_required[:3])))
 
-            childs = Categories.search([
+            childs = Category.search([
                 ('parent', 'child_of', unique_categories_ids),
                 ('id', 'not in', unique_categories_ids)])
 
