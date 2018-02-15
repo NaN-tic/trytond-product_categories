@@ -58,6 +58,10 @@ msgctxt "field:product.template-product.categories,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
+msgctxt "field:product.category,def_category:"
+msgid "Default Category"
+msgstr "Per defecte"
+
 msgctxt "model:product.template-product.categories,name:"
 msgid "Categories for products"
 msgstr "Categories per productes"
