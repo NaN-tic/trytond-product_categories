@@ -138,7 +138,7 @@ class Category:
         }, depends=['kind'])
     accounting = fields.Boolean('Accounting')
     def_category = fields.Boolean('Default Category', states={
-        'invisible': (Eval('kind') != 'other') | Bool(Eval('accounting'))
+        'invisible': (Eval('kind') == 'view') | Bool(Eval('accounting'))
         })
 
     @staticmethod

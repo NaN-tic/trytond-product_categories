@@ -22,6 +22,14 @@ msgctxt "field:product.category,unique:"
 msgid "Unique"
 msgstr "Única"
 
+msgctxt "field:product.category,accounting:"
+msgid "Accounting"
+msgstr "Comptabilitat"
+
+msgctxt "field:product.category,def_category:"
+msgid "Default Category"
+msgstr "Per defecte"
+
 msgctxt "field:product.template,categories:"
 msgid "Categories"
 msgstr "Categories"
@@ -58,17 +66,9 @@ msgctxt "field:product.template-product.categories,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-msgctxt "field:product.category,def_category:"
-msgid "Default Category"
-msgstr "Per defecte"
-
 msgctxt "model:product.template-product.categories,name:"
 msgid "Categories for products"
 msgstr "Categories per productes"
-
-msgctxt "selection:product.category,kind:"
-msgid "Accounting"
-msgstr "Comptabilitat"
 
 msgctxt "selection:product.category,kind:"
 msgid "Other"

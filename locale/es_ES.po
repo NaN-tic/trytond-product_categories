@@ -22,6 +22,14 @@ msgctxt "field:product.category,unique:"
 msgid "Unique"
 msgstr "Única"
 
+msgctxt "field:product.category,accounting:"
+msgid "Accounting"
+msgstr "Contabilidad"
+
+msgctxt "field:product.category,def_category:"
+msgid "Default Category"
+msgstr "Por defecto"
+
 msgctxt "field:product.template,categories:"
 msgid "Categories"
 msgstr "Categorías"
@@ -58,17 +66,9 @@ msgctxt "field:product.template-product.categories,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
-msgctxt "field:product.category,def_category:"
-msgid "Default Category"
-msgstr "Por defecto"
-
 msgctxt "model:product.template-product.categories,name:"
 msgid "Categories for products"
 msgstr "Categorias por productos"
-
-msgctxt "selection:product.category,kind:"
-msgid "Accounting"
-msgstr "Contabilidad"
 
 msgctxt "selection:product.category,kind:"
 msgid "Other"
