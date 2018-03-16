@@ -1,15 +1,13 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
-
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-import collections
+from trytond.modules.product.product import STATES, DEPENDS
 
 
-__metaclass__ = PoolMeta
+__all__ = ['Template', 'TemplateCategory', 'Category']
 
-__all__ = ['Template', 'ProductCategories', 'Category']
 """
 Add to categories the following:
  - New type, view --> Like root but inside of it
@@ -25,15 +23,15 @@ Add to products the following:
    the accounting tag set
 
    This module should be refractored in version 4.0
-
 """
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = 'product.template'
-    # TODO: Remove in 4.0
-    categories = fields.Many2Many('product.template-product.categories',
-        'product', 'category', 'Tags')
+    # TODO upgrade 4.0 remove categories field
+    categories = fields.Many2Many('product.template-product.category',
+        'template', 'category', 'Categories', states=STATES, depends=DEPENDS)
 
     @classmethod
     def __setup__(cls):
@@ -112,26 +110,23 @@ class Template:
         return list1 == []
 
 
-class ProductCategories(ModelSQL):
-    "Categories for products"
-    __name__ = 'product.template-product.categories'
-
-    product = fields.Many2One('product.template', 'Product', required=True,
-        ondelete='CASCADE', select=True)
-    category = fields.Many2One('product.category', 'Category', required=True,
-        domain=[('kind', '!=', 'view'),
-        ('accounting', '=', False)],
-        ondelete='CASCADE', select=True)
+class TemplateCategory(ModelSQL):
+    'Template - Category'
+    __name__ = 'product.template-product.category'
+    # TODO upgrade 4.0 remove class
+    template = fields.Many2One('product.template', 'Template',
+        ondelete='CASCADE', required=True, select=True)
+    category = fields.Many2One('product.category', 'Category',
+        ondelete='CASCADE', required=True, select=True)
 
 
 class Category:
+    __metaclass__ = PoolMeta
     __name__ = 'product.category'
-
     kind = fields.Selection([
         ('other', 'Other'),
         ('view', 'View'),
         ], 'Kind', required=True)
-
     unique = fields.Boolean('Unique', states={
         'invisible': Eval('kind') != 'view',
         })

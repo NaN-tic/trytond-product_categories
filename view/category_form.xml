@@ -2,10 +2,6 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="/form/notebook" position="replace_attributes">
-		<page id="accounting" states="{'invisible': ~Eval('accounting')}"/>
-	</xpath>
-
     <xpath expr="/form/field[@name='parent']" position="after">
         <label name="kind"/>
         <field name="kind"/>
