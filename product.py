@@ -105,6 +105,12 @@ class Category(metaclass=PoolMeta):
         states={
             'invisible': Eval('kind') != 'view',
         }, depends=['kind'])
+    sequence = fields.Integer('Sequence')
+
+    @classmethod
+    def __setup__(cls):
+        super(Category, cls).__setup__()
+        cls._order.insert(0, ('sequence', 'ASC'))
 
     @staticmethod
     def default_kind():

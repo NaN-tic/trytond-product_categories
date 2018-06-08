@@ -5,6 +5,8 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="/form/field[@name='parent']" position="after">
         <label name="kind"/>
         <field name="kind"/>
+        <label name="sequence"/>
+        <field name="sequence"/>
         <label name="required"/>
         <field name="required"/>
         <label name="unique"/>
