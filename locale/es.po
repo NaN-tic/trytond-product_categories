@@ -3,12 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.template:"
-msgid "The template %s has repeated categories marked as unique"
-msgstr "Hay categorias repetidas marcadas como única en la plantilla %s."
+msgid "The template \"%s\" has repeated categories marked as unique"
+msgstr "Hay categorías repetidas marcadas como única en la plantilla \"%s\"."
 
 msgctxt "error:product.template:"
-msgid "The template %s is missing some required categories: %s"
-msgstr "El producto %s le faltan categorias requreidas: %s"
+msgid "The template \"%s\" is missing some required categories: %s"
+msgstr "El producto \"%s\" le faltan categorías requeridas: %s"
 
 msgctxt "field:product.category,kind:"
 msgid "Kind"

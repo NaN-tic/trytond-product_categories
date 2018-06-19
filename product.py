@@ -25,9 +25,9 @@ class Template:
     def __setup__(cls):
         super(Template, cls).__setup__()
         cls._error_messages.update({
-                'missing_categories': ('The template %s is missing some '
+                'missing_categories': ('The template "%s" is missing some '
                     'required categories: %s'),
-                'repeated_unique': ('The template %s has repeated '
+                'repeated_unique': ('The template "%s" has repeated '
                     'categories marked as unique'),
                 })
 
