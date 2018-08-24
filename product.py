@@ -17,8 +17,7 @@ Add to categories the following:
 """
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
 
     @classmethod
@@ -76,7 +75,7 @@ class Template:
                 ('parent', 'child_of', unique_categories_ids),
                 ('id', 'not in', unique_categories_ids)])
 
-            unique_values = filter(lambda a: a in childs, template.categories)
+            unique_values = [a for a in template.categories if a in childs]
             # Get all parents to compare them
             parents = [u.parent.id for u in unique_values]
 
@@ -92,8 +91,7 @@ class Template:
         return list1 == []
 
 
-class Category:
-    __metaclass__ = PoolMeta
+class Category(metaclass=PoolMeta):
     __name__ = 'product.category'
     kind = fields.Selection([
         ('other', 'Other'),
