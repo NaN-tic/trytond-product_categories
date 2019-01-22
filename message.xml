@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data group="1">
+      <record model="ir.message" id="missing_categories">
+          <field name="text">The template "%(template)s" is missing some required categories: %(categories)s'</field>
+      </record>
+      <record model="ir.message" id="repeated_unique">
+          <field name="text">The template "%(template)s" has repeated categories marked as unique</field>
+      </record>
+    </data>
+</tryton>

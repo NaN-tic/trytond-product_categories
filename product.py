@@ -21,16 +21,6 @@ class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
 
     @classmethod
-    def __setup__(cls):
-        super(Template, cls).__setup__()
-        cls._error_messages.update({
-                'missing_categories': ('The template "%s" is missing some '
-                    'required categories: %s'),
-                'repeated_unique': ('The template "%s" has repeated '
-                    'categories marked as unique'),
-                })
-
-    @classmethod
     def validate(cls, vlist):
         super(Template, cls).validate(vlist)
         cls._check_categories(vlist)
@@ -68,8 +58,10 @@ class Template(metaclass=PoolMeta):
             exisits = cls.check_if_exisit(childs_required, tpl_categories_ids)
             if not exisits:
                 cat_required = [c.name for c in required_categories]
-                cls.raise_user_error('missing_categories', (template.rec_name,
-                    ', '.join(cat_required[:3])))
+                raise UserError(gettext(
+                    'product_categories.missing_categories',
+                    template=template.rec_name,
+                    categories=', '.join(cat_required[:3])))
 
             childs = Category.search([
                 ('parent', 'child_of', unique_categories_ids),
@@ -80,7 +72,9 @@ class Template(metaclass=PoolMeta):
             parents = [u.parent.id for u in unique_values]
 
             if len(parents) != len(set(parents)):
-                cls.raise_user_error('repeated_unique', template.rec_name)
+                raise UserError(gettext(
+                    'product_categories.repeated_unique',
+                    template=template.rec_name))
 
     @staticmethod
     def check_if_exisit(list1, list2):
