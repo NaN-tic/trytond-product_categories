@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.template:"
-msgid "The template \"%s\" has repeated categories marked as unique"
-msgstr "Hi han categories repetides marcades com única a la plantilla \"%s\"."
-
-msgctxt "error:product.template:"
-msgid "The template \"%s\" is missing some required categories: %s"
-msgstr "El producte \"%s\" li falten categories requerides: %s"
-
 msgctxt "field:product.category,kind:"
 msgid "Kind"
 msgstr "Tipus"
@@ -21,6 +13,14 @@ msgstr "Requerit"
 msgctxt "field:product.category,unique:"
 msgid "Unique"
 msgstr "Única"
+
+msgctxt "model:ir.message,text:missing_categories"
+msgid "The template \"%(template)s\" is missing some required categories: %(categories)s"
+msgstr "El producte \"%(template)s\" li falten categories requerides: %(categories)s"
+
+msgctxt "model:ir.message,text:repeated_unique"
+msgid "The template \"%(template)s\" has repeated categories marked as unique"
+msgstr "Hi han categories repetides marcades com única a la plantilla \"%(template)s\"."
 
 msgctxt "selection:product.category,kind:"
 msgid "Other"
