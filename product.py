@@ -3,6 +3,8 @@
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.exceptions import UserError
+from trytond.i18n import gettext
 
 __all__ = ['Template', 'Category']
 

@@ -4,7 +4,6 @@ import unittest
 from decimal import Decimal
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
-from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 
