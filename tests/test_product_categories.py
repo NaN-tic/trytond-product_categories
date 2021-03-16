@@ -48,7 +48,34 @@ class TestProductCategoriesCase(ModuleTestCase):
         template.save()
         self.assertEqual(len(template.categories), 3)
 
+    @with_transaction(context={'check_categories': False})
+    def test_not_check_categories(self):
+        pool = Pool()
+        Category = pool.get('product.category')
+        Template = pool.get('product.template')
+        Uom = pool.get('product.uom')
 
+        uom, = Uom.search([], limit=1)
+
+        category_required = Category()
+        category_required.name = 'Category Required'
+        category_required.required = True
+        category_required.kind = 'view'
+        category_required.save()
+
+        category = Category()
+        category.name = 'Category'
+        category.save()
+
+        template = Template()
+        template.name = 'Template'
+        template.type = 'goods'
+        template.list_price = Decimal(20)
+        template.cost_price = Decimal(10)
+        template.default_uom = uom
+        template.categories = [category]
+        template.save()
+        self.assertTrue(template.id)
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
