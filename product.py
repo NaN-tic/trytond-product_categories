@@ -3,6 +3,7 @@
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 __all__ = ['Template', 'Category']
 
@@ -28,6 +29,9 @@ class Template(metaclass=PoolMeta):
     @classmethod
     def _check_categories(cls, templates):
         Category = Pool().get('product.category')
+
+        if not Transaction().context.get('check_categories', True):
+            return
 
         required_categories = Category.search([
                 ('required', '=', True),
