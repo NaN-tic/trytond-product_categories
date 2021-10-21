@@ -39,8 +39,6 @@ class TestProductCategoriesCase(ModuleTestCase):
         template = Template()
         template.name = 'Template'
         template.type = 'goods'
-        template.list_price = Decimal(20)
-        template.cost_price = Decimal(10)
         template.default_uom = uom
         template.categories = [category]
         self.assertRaises(Exception, Template.create, [template._save_values])
@@ -70,8 +68,6 @@ class TestProductCategoriesCase(ModuleTestCase):
         template = Template()
         template.name = 'Template'
         template.type = 'goods'
-        template.list_price = Decimal(20)
-        template.cost_price = Decimal(10)
         template.default_uom = uom
         template.categories = [category]
         template.save()
