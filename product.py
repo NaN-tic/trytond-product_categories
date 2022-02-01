@@ -57,8 +57,8 @@ class Template(metaclass=PoolMeta):
         for template in templates:
             if childs_required:
                 tpl_categories_ids = [c.id for c in template.categories]
-                exisits = cls.check_if_exisit(childs_required, tpl_categories_ids)
-                if not exisits:
+                exists = cls.check_if_exists(childs_required, tpl_categories_ids)
+                if not exists:
                     cat_required = [c.name for c in required_categories]
                     raise UserError(gettext(
                         'product_categories.missing_categories',
@@ -80,7 +80,7 @@ class Template(metaclass=PoolMeta):
                         template=template.rec_name))
 
     @staticmethod
-    def check_if_exisit(list1, list2):
+    def check_if_exists(list1, list2):
         for template in list2:
             for required_parent in list1:
                 if template in required_parent:
