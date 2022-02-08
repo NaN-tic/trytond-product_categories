@@ -87,6 +87,15 @@ class Template(metaclass=PoolMeta):
                     list1.remove(required_parent)
         return list1 == []
 
+    def get_category_with_parent(self, matching_parent):
+        for category in self.categories_all:
+            parent = category
+            while parent:
+                if parent == matching_parent:
+                    return category
+                parent = category.parent
+        return
+
 
 class Category(metaclass=PoolMeta):
     __name__ = 'product.category'
