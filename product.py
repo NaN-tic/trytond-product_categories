@@ -93,7 +93,7 @@ class Template(metaclass=PoolMeta):
             while parent:
                 if parent == matching_parent:
                     return category
-                parent = category.parent
+                parent = parent.parent
         return
 
 
