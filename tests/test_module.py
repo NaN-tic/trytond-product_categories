@@ -1,16 +1,14 @@
-# The COPYRIGHT file at the top level of this repository contains the full
-# copyright notices and license terms.
-import unittest
-from decimal import Decimal
-import trytond.tests.test_tryton
+
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
+
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.pool import Pool
 
 
-class TestProductCategoriesCase(ModuleTestCase):
-    'Test Product Categories module'
+class ProductCategoriesTestCase(ModuleTestCase):
+    'Test ProductCategories module'
     module = 'product_categories'
-
 
     @with_transaction()
     def test_categories(self):
@@ -73,8 +71,5 @@ class TestProductCategoriesCase(ModuleTestCase):
         template.save()
         self.assertTrue(template.id)
 
-def suite():
-    suite = trytond.tests.test_tryton.suite()
-    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-        TestProductCategoriesCase))
-    return suite
+
+del ModuleTestCase
