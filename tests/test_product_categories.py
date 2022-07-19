@@ -44,9 +44,9 @@ class TestProductCategoriesCase(ModuleTestCase):
         template.default_uom = uom
         template.categories = [category]
         self.assertRaises(Exception, Template.create, [template._save_values])
-        template.categories = [category, cat1, cat1a]
+        template.categories = [category, cat1a]
         template.save()
-        self.assertEqual(len(template.categories), 3)
+        self.assertEqual(len(template.categories), 2)
 
     @with_transaction(context={'check_categories': False})
     def test_not_check_categories(self):
