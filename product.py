@@ -66,18 +66,15 @@ class Template(metaclass=PoolMeta):
                         categories=', '.join(cat_required[:3])))
 
             if unique_categories_ids:
-                childs = Category.search([
-                    ('parent', 'child_of', unique_categories_ids),
-                    ('id', 'not in', unique_categories_ids)])
-
-                unique_values = [a for a in template.categories if a in childs]
-                # Get all parents to compare them
-                parents = [u.parent.id for u in unique_values]
-
-                if len(parents) != len(set(parents)):
-                    raise UserError(gettext(
-                        'product_categories.repeated_unique',
-                        template=template.rec_name))
+                for unique_category_id in unique_categories_ids:
+                    # Check if we have more than one child category for each
+                    # unique category
+                    childs = Category.search([
+                        ('parent', 'child_of', unique_category_id)])
+                    if len(set(childs) & set(template.categories)) > 1:
+                        raise UserError(gettext(
+                            'product_categories.repeated_unique',
+                            template=template.rec_name))
 
     @staticmethod
     def check_if_exists(list1, list2):
