@@ -24,6 +24,11 @@ class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.categories.domain += [('kind', '!=', 'view')]
+
+    @classmethod
     def validate(cls, vlist):
         super(Template, cls).validate(vlist)
         cls._check_categories(vlist)
