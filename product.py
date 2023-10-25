@@ -56,7 +56,7 @@ class Template(metaclass=PoolMeta):
 
         for template in templates:
             if childs_required:
-                tpl_categories_ids = [c.id for c in template.categories]
+                tpl_categories_ids = [c.id for c in template.categories_all]
                 exists = cls.check_if_exists(childs_required, tpl_categories_ids)
                 if not exists:
                     cat_required = [c.name for c in required_categories]
