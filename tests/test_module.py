@@ -39,7 +39,7 @@ class ProductCategoriesTestCase(ModuleTestCase):
         template.type = 'goods'
         template.default_uom = uom
         template.categories = [category]
-        self.assertRaises(Exception, Template.create, [template._save_values])
+        self.assertRaises(Exception, Template.create, [template._save_values()])
         template.categories = [category, cat1a]
         template.save()
         self.assertEqual(len(template.categories), 2)
