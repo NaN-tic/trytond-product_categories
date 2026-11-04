@@ -1,0 +1,44 @@
+#
+msgid ""
+msgstr ""
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgctxt "field:product.category,kind:"
+msgid "Kind"
+msgstr "种类"
+
+msgctxt "field:product.category,required:"
+msgid "Required"
+msgstr "必填项"
+
+msgctxt "field:product.category,unique:"
+msgid "Unique"
+msgstr "唯一"
+
+#, python-format
+msgctxt "model:ir.message,text:missing_categories"
+msgid ""
+"The template \"%(template)s\" is missing some required categories: "
+"%(categories)s"
+msgstr "模板“%(template)s”缺少必需的类别：%(categories)s"
+
+#, python-format
+msgctxt "model:ir.message,text:repeated_unique"
+msgid "The template \"%(template)s\" has repeated categories marked as unique"
+msgstr "模板“%(template)s”重复使用了标记为唯一的类别"
+
+msgctxt "selection:product.category,kind:"
+msgid "Other"
+msgstr "其它"
+
+msgctxt "selection:product.category,kind:"
+msgid "View"
+msgstr "视图"
+
+msgctxt "field:product.category,sequence:"
+msgid "Sequence"
+msgstr "序列"
