@@ -1,0 +1,45 @@
+#
+msgid ""
+msgstr ""
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "field:product.category,kind:"
+msgid "Kind"
+msgstr "Érvényesség"
+
+msgctxt "field:product.category,required:"
+msgid "Required"
+msgstr "Kötelezõ"
+
+msgctxt "field:product.category,unique:"
+msgid "Unique"
+msgstr "Egyedi"
+
+#, python-format
+msgctxt "model:ir.message,text:missing_categories"
+msgid ""
+"The template \"%(template)s\" is missing some required categories: "
+"%(categories)s"
+msgstr ""
+"A(z) „%(template)s” sablonnál hiányoznak kötelező kategóriák: %(categories)s"
+
+#, python-format
+msgctxt "model:ir.message,text:repeated_unique"
+msgid "The template \"%(template)s\" has repeated categories marked as unique"
+msgstr "A(z) „%(template)s” sablonnál ismétlődnek egyedinek jelölt kategóriák"
+
+msgctxt "selection:product.category,kind:"
+msgid "Other"
+msgstr "egyéb"
+
+msgctxt "selection:product.category,kind:"
+msgid "View"
+msgstr "Nézet"
+
+msgctxt "field:product.category,sequence:"
+msgid "Sequence"
+msgstr "Sorszám"
